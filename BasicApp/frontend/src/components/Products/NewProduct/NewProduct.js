@@ -19,6 +19,8 @@ const NewProduct = (props) => {
   const submitProductHandler = (event) => {
     event.preventDefault();
     props.onAddProduct(enteredTitle, enteredPrice);
+    setEnteredPrice("");
+    setEnteredTitle("");
   };
 
   return (
@@ -29,6 +31,7 @@ const NewProduct = (props) => {
           type="text"
           label="Title"
           id="title"
+          placeholder="Enter Product Name"
           value={enteredTitle}
           onChange={titleChangeHandler}
         />
@@ -37,6 +40,7 @@ const NewProduct = (props) => {
           label="Price"
           step={0.01}
           id="price"
+          placeholder={"Enter Product Price"}
           value={enteredPrice}
           onChange={priceChangeHandler}
         />

@@ -1,4 +1,5 @@
 import React from "react";
+import "./input.css";
 
 const Input = (props) => {
   return (
@@ -8,6 +9,7 @@ const Input = (props) => {
         type={props.type}
         step={props.step}
         id={props.id}
+        placeholder={props.placeholder}
         value={props.value}
         onChange={props.onChange}
       />

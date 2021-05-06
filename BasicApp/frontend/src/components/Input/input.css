@@ -1,20 +1,22 @@
 .input {
-  margin: 1rem 0;
+  margin: 1rem 0rem;
 }
 
 .input label {
   font-weight: bold;
   display: block;
+  width: 100%;
   margin-bottom: 0.5rem;
 }
 
 .input input {
   font: inherit;
   display: block;
-  width: 100%;
+  width: 98%;
   border: 1px solid #ccc;
   background: white;
   padding: 0.15rem 0.25rem;
+  height: 2rem;
 }
 
 .input input:focus {
