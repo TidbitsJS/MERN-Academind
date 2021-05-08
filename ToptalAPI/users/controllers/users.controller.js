@@ -34,7 +34,7 @@ exports.patchById = (req, res) => {
 
   UserModel.patchUser(req.params.userId, req.body)
     .then((result) => {
-      res.status(204).send({});
+      res.status(204).send(result.firstName + "'s profile Updated");
     })
     .catch(() => res.status(400).json("Error: Failed to update"));
 };
@@ -55,4 +55,12 @@ exports.list = (req, res) => {
       res.status(200).send(result);
     })
     .catch(() => res.status(400).json("Error: failed to display"));
+};
+
+exports.removeById = (req, res) => {
+  UserModel.removeById(req.params.userId)
+    .then((result) => {
+      res.status(204).send({});
+    })
+    .catch(() => res.status(500).json("Error: Failed to delete the user"));
 };
