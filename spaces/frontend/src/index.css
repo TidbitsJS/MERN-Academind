@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,400;0,700;1,300&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Alegreya Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #4d4d4d;
+}
