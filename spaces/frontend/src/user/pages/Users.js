@@ -9,6 +9,12 @@ const Users = () => {
       image: "https://source.unsplash.com/250x250/?nature",
       places: 12,
     },
+    {
+      id: 2,
+      name: "John Smith",
+      image: "https://source.unsplash.com/250x250/?books",
+      places: 10,
+    },
   ];
   return <UsersList items={USERS} />;
 };

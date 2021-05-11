@@ -12,3 +12,10 @@ body {
   margin: 0;
   background: #4d4d4d;
 }
+
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
