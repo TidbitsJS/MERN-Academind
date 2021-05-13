@@ -9,7 +9,7 @@ const UsersList = (props) => {
     return (
       <div className="center">
         <Card>
-          <h2>No Users Found</h2>
+          <h2>No users found</h2>
         </Card>
       </div>
     );
