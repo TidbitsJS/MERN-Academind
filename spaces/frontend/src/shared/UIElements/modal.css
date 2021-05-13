@@ -1,9 +1,9 @@
 .modal {
   z-index: 100;
   position: fixed;
-  top: 22vh;
-  left: 10%;
-  width: 80%;
+  top: 13vh;
+  left: 5%;
+  width: 90%;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 8px;
@@ -11,13 +11,14 @@
 
 .modal__header {
   width: 100%;
-  padding: 1rem 0.5rem;
+  padding: 0.2rem 0.5rem;
   background: #2a006e;
   color: white;
 }
 
 .modal__header h2 {
   margin: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .modal__content {
@@ -25,7 +26,7 @@
 }
 
 .modal__footer {
-  padding: 1rem 0.5rem;
+  padding: 0.5rem;
 }
 
 @media (min-width: 768px) {
