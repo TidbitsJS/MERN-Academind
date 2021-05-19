@@ -1,0 +1,13 @@
+{
+  "name": "placere",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1"
+  }
+}
