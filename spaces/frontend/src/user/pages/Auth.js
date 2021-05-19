@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import Button from "../../shared/components/FormElements/Button";
 import Input from "../../shared/components/FormElements/Input";
@@ -9,11 +9,12 @@ import {
   VALIDATOR_REQUIRE,
 } from "../../shared/utils/Validators";
 import { useForm } from "../../shared/hooks/FormHook";
+import { AuthContext } from "../../shared/context/Auth-Context";
 import "./auth.css";
 
 const Auth = () => {
+  const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
-
   const [formState, inputHandler, setFormData] = useForm(
     {
       email: {
@@ -54,7 +55,7 @@ const Auth = () => {
 
   const authSubmitHandler = (event) => {
     event.preventDefault();
-    console.log(formState.inputs);
+    auth.login();
   };
 
   return (
@@ -101,7 +102,7 @@ const Auth = () => {
       </form>
       <div className="auth__switchMode">
         <h3>
-          {isLoginMode
+          {!isLoginMode
             ? "Already have an account?"
             : "New here, don't have an account?"}
         </h3>
