@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
 const placesRoutes = require("./routes/places.routes");
@@ -26,4 +27,15 @@ app.use((error, req, res, next) => {
   res.json({ message: error.message || "Unknow error occured!" });
 });
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(port, () => console.log(`Server is running on port ${port}`));
+    console.log("connected to mongo database");
+  })
+  .catch((err) => {
+    console.log("Database connection failed", err);
+  });
