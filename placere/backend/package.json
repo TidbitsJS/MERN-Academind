@@ -12,6 +12,7 @@
     "express": "^4.17.1",
     "express-validator": "^6.11.1",
     "mongoose": "^5.12.10",
+    "mongoose-unique-validator": "^2.0.3",
     "uuid": "^8.3.2"
   }
 }
