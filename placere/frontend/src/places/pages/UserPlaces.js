@@ -23,7 +23,7 @@ const UserPlaces = () => {
     };
 
     fetchPlaces();
-  }, [sendRequest]);
+  }, [sendRequest, userId]);
 
   return (
     <React.Fragment>

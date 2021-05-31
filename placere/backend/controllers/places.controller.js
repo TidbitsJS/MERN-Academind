@@ -35,7 +35,7 @@ const getPlacesbyUserId = async (req, res, next) => {
   let places;
   try {
     // places = await Place.find({ creator: userId });
-    places = await User.findById(userId).populate('places')
+    places = await User.findById(userId).populate("places");
   } catch (err) {
     const error = new HttpError(
       "Fetching places failed, please try again.",
@@ -55,7 +55,7 @@ const getPlacesbyUserId = async (req, res, next) => {
 
   res.json({
     // places: places.map((place) => place.toObject({ getters: true })),
-    places: places.places.map(place => place.toObject({getters: true}))
+    places: places.places.map((place) => place.toObject({ getters: true })),
   });
 };
 
@@ -128,7 +128,14 @@ const updatePlace = async (req, res, next) => {
   }
 
   const updatePlaceId = req.params.placeId;
-  const { title, description } = req.body;
+  const { title, description, address } = req.body;
+
+  let coordinates;
+  try {
+    coordinates = await getCoordsForAddress(address);
+  } catch (error) {
+    return next(error);
+  }
 
   let updatedPlace;
   try {
@@ -143,6 +150,8 @@ const updatePlace = async (req, res, next) => {
 
   updatedPlace.title = title;
   updatedPlace.description = description;
+  updatedPlace.address = address;
+  updatedPlace.location = coordinates;
 
   try {
     await updatedPlace.save();
@@ -162,27 +171,26 @@ const deletePlace = async (req, res, next) => {
 
   let toDeletePlace;
   try {
-    toDeletePlace = await Place.findById(deletePlaceId).populate('creator');
+    toDeletePlace = await Place.findById(deletePlaceId).populate("creator");
   } catch (err) {
     const error = new HttpError("Could not find a place for that id.", 404);
     return next(error);
   }
 
-  if(!toDeletePlace) {
-    const error = new HttpError("Could not find place for this id.", 500)
-    return next(error)
+  if (!toDeletePlace) {
+    const error = new HttpError("Could not find place for this id.", 500);
+    return next(error);
   }
 
   try {
-    const session = await mongoose.startSession()
-    session.startTransaction()
+    const session = await mongoose.startSession();
+    session.startTransaction();
 
-    toDeletePlace.remove({session: session})
-    toDeletePlace.creator.places.pull(toDeletePlace)
+    toDeletePlace.remove({ session: session });
+    toDeletePlace.creator.places.pull(toDeletePlace);
 
-    await toDeletePlace.creator.save({session: session})
-    await session.commitTransaction()
-
+    await toDeletePlace.creator.save({ session: session });
+    await session.commitTransaction();
   } catch (err) {
     const error = new HttpError(
       "Something went wrong, could not delete the place.",
