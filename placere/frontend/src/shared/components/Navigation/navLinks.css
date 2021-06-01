@@ -51,6 +51,16 @@
   color: white;
 }
 
+.logout-btn {
+  border: 2px solid #000 !important;
+  border-radius: 5px;
+  background: #000 !important;
+  outline: none;
+  color: #fff !important;
+  padding: 0.3rem 0.5rem !important;
+  transition: 0.3s ease;
+}
+
 @media (min-width: 768px) {
   .nav-links {
     flex-direction: row;
@@ -64,7 +74,6 @@
     color: white;
     text-decoration: none;
   }
-
   .nav-links button {
     border: 1px solid white;
     color: white;
@@ -75,5 +84,21 @@
   .nav-links button:active {
     background: #f8df00;
     color: #292929;
+  }
+
+  .logout-btn {
+    border: 2px solid #000 !important;
+    border-radius: 5px;
+    background: #000 !important;
+    outline: none;
+    color: #fff !important;
+    padding: 0.3rem 0.5rem !important;
+    transition: 0.3s ease;
+  }
+
+  .logout-btn:hover {
+    background: #f8df00 !important;
+    border: 2px solid #f8df00 !important;
+    color: #000 !important;
   }
 }

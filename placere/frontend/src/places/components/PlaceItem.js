@@ -6,9 +6,9 @@ import Modal from "../../shared/components/UIElements/Modal";
 import Map from "../../shared/components/UIElements/Map";
 import { AuthContext } from "../../shared/context/Auth-Context";
 import { useHttpClient } from "../../shared/hooks/HttpHook";
-import "./placeItem.css";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import Spinner from "../../shared/components/UIElements/Spinner";
+import "./placeItem.css";
 
 const PlaceItem = (props) => {
   const auth = useContext(AuthContext);
@@ -97,7 +97,7 @@ const PlaceItem = (props) => {
             <Button inverse onClick={openMapHandlre}>
               View
             </Button>
-            {auth.isLoggedIn && (
+            {auth.userId === props.creatorID && (
               <React.Fragment>
                 <Button to={`/places/${props.id}`}>Edit</Button>
                 <Button danger onClick={showDeleteWarningHandler}>

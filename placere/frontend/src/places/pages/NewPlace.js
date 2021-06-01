@@ -51,7 +51,7 @@ const NewPlace = () => {
         }
       );
 
-      history.push("/");
+      history.push(`/${auth.userId}/places`);
     } catch (err) {}
   };
 
