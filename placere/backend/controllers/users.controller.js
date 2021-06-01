@@ -46,7 +46,7 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    image: "https://source.unsplash.com/1600x900/?people",
+    image: req.file.path,
     password,
     places: [],
   });
