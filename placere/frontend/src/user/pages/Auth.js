@@ -14,6 +14,7 @@ import { useHttpClient } from "../../shared/hooks/HttpHook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import Spinner from "../../shared/components/UIElements/Spinner";
 import "./auth.css";
+import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 
 const Auth = () => {
   const auth = useContext(AuthContext);
@@ -40,6 +41,7 @@ const Auth = () => {
         {
           ...formState.inputs,
           name: undefined,
+          image: undefined,
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -49,6 +51,10 @@ const Auth = () => {
           ...formState.inputs,
           name: {
             value: "",
+            isValid: false,
+          },
+          image: {
+            value: null,
             isValid: false,
           },
         },
@@ -116,7 +122,6 @@ const Auth = () => {
               onInput={inputHandler}
             />
           )}
-
           <Input
             id="email"
             placeholder="Enter your email"
@@ -137,6 +142,9 @@ const Auth = () => {
             errorText="Please enter valid password."
             onInput={inputHandler}
           />
+          {!isLoginMode && (
+            <ImageUpload center id="image" onInput={inputHandler} />
+          )}
           <Button type="submit" disabled={!formState.isValid}>
             {isLoginMode ? "LOGIN" : "SIGNUP"}
           </Button>
