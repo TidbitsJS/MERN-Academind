@@ -12,6 +12,7 @@ import {
 import { useForm } from "../../shared/hooks/FormHook";
 import { useHttpClient } from "../../shared/hooks/HttpHook";
 import { AuthContext } from "../../shared/context/Auth-Context";
+import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 import "./place.css";
 
 const NewPlace = () => {
@@ -30,6 +31,10 @@ const NewPlace = () => {
       value: "",
       isValid: false,
     },
+    image: {
+      value: null,
+      isValid: false,
+    },
   });
 
   const history = useHistory();
@@ -37,18 +42,17 @@ const NewPlace = () => {
   const placeSubmitHandler = async (event) => {
     event.preventDefault();
     try {
+      const formData = new FormData();
+      formData.append("title", formState.inputs.title.value);
+      formData.append("description", formState.inputs.description.value);
+      formData.append("address", formState.inputs.address.value);
+      formData.append("image", formState.inputs.image.value);
+      formData.append("creator", auth.userId);
+
       await sendRequest(
         `${process.env.REACT_APP_SERVER_URI}/api/places`,
         "POST",
-        JSON.stringify({
-          title: formState.inputs.title.value,
-          description: formState.inputs.description.value,
-          address: formState.inputs.address.value,
-          creator: auth.userId,
-        }),
-        {
-          "Content-Type": "application/json",
-        }
+        formData
       );
 
       history.push(`/${auth.userId}/places`);
@@ -81,6 +85,7 @@ const NewPlace = () => {
           }
           onInput={inputHandler}
         />
+        <ImageUpload center id="image" onInput={inputHandler} />
         <Input
           id="address"
           element="input"
