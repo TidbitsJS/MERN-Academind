@@ -3,5 +3,13 @@
   margin: 1rem auto;
   padding: 0;
   width: 90%;
-  max-width: 40rem;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: flex-start;
+  justify-content: center;
+  break-inside: avoid;
+  break-before: avoid;
+  break-after: avoid;
 }

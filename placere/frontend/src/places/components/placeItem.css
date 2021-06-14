@@ -1,42 +1,79 @@
 .place-item {
-  margin: 1.25rem 0;
+  margin: 1.25rem 1rem;
+  max-width: 350px;
+
+  break-inside: avoid;
+  break-before: avoid;
+  break-after: avoid;
 }
 
 .place-item__content {
   padding: 0;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .place-item__info {
-  padding: 1rem;
-  text-align: center;
+  padding: 0rem 1rem;
 }
 
 .place-item__image {
   width: 100%;
-  height: 12.5rem;
   margin-right: 1.5rem;
+
+  padding: 0.8rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .place-item__image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border-radius: 7px;
 }
 
 .place-item__info h2,
 .place-item__info h3,
 .place-item__info p {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.3rem 0;
 }
 
 .place-item__info h2 {
-  font-style: italic;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.place-item__info h3 {
+  color: #283055;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.place-item__infoSign {
+  margin-top: 1.3rem;
+  width: 50px;
+  text-align: center;
+  background: #e9edff;
+  padding: 0.2rem;
+  border-radius: 5px;
+}
+
+.place-item__info p {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+.place-item__info p::first-letter {
+  font-size: 1.3rem;
 }
 
 .place-item__actions {
-  padding: 1rem;
   text-align: center;
   border-top: 1px solid #ccc;
+  margin-top: 0.3rem;
 }
 
 .place-item__modal-content {

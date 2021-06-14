@@ -82,7 +82,7 @@ const PlaceItem = (props) => {
         </p>
       </Modal>
 
-      <li className="place-item">
+      <div className="place-item">
         <Card className="place-item__content">
           {isLoading && <Spinner asOverlay />}
           <div className="place-item__image">
@@ -94,6 +94,7 @@ const PlaceItem = (props) => {
           <div className="place-item__info">
             <h2>{props.title}</h2>
             <h3>{props.address}</h3>
+            <div className="place-item__infoSign">Info</div>
             <p>{props.description}</p>
           </div>
           <div className="place-item__actions">
@@ -110,7 +111,7 @@ const PlaceItem = (props) => {
             )}
           </div>
         </Card>
-      </li>
+      </div>
     </React.Fragment>
   );
 };
