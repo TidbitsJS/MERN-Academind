@@ -5,6 +5,8 @@
   break-inside: avoid;
   break-before: avoid;
   break-after: avoid;
+
+  transition: height 0.5s ease-in;
 }
 
 .place-item__content {
@@ -52,12 +54,17 @@
   font-size: 1rem;
 }
 
+.place-item_info-show {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .place-item__infoSign {
-  margin-top: 1.3rem;
-  width: 50px;
   text-align: center;
   background: #e9edff;
-  padding: 0.2rem;
+  padding: 0.2rem 0.8rem;
+  font-size: 1.1rem;
   border-radius: 5px;
 }
 
@@ -72,7 +79,7 @@
 
 .place-item__actions {
   text-align: center;
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   margin-top: 0.3rem;
 }
 
@@ -92,6 +99,39 @@
 .map-container {
   height: 25rem;
   width: 100%;
+}
+
+.show-more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 1rem 0;
+}
+
+.show-more-btn button {
+  cursor: pointer;
+  border-radius: 7px;
+  padding: 0.2rem 0.8rem;
+  font-size: 1.1rem;
+  font-family: inherit;
+  background: #ff0048;
+  color: #fff;
+  border: 2px solid #ffd7e3;
+  outline: none;
+  transition: 0.3s ease-in;
+}
+
+.show-more-btn button:hover,
+.show-more-btn button:active,
+.show-more-btn button:focus {
+  background: #fff;
+  border-color: #ff0048;
+  color: #000;
+}
+
+.less {
+  margin: 0.4rem 0;
 }
 
 @media (min-width: 768px) {

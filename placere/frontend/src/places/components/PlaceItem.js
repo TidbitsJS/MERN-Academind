@@ -13,6 +13,7 @@ import "./placeItem.css";
 const PlaceItem = (props) => {
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -37,6 +38,10 @@ const PlaceItem = (props) => {
       );
       props.onDelete(props.id);
     } catch (err) {}
+  };
+
+  const showMoreHandler = () => {
+    setShowMore(!showMore);
   };
 
   return (
@@ -94,22 +99,40 @@ const PlaceItem = (props) => {
           <div className="place-item__info">
             <h2>{props.title}</h2>
             <h3>{props.address}</h3>
-            <div className="place-item__infoSign">Info</div>
-            <p>{props.description}</p>
-          </div>
-          <div className="place-item__actions">
-            <Button inverse onClick={openMapHandlre}>
-              View
-            </Button>
-            {auth.userId === props.creatorID && (
-              <React.Fragment>
-                <Button to={`/places/${props.id}`}>Edit</Button>
-                <Button danger onClick={showDeleteWarningHandler}>
-                  Delete
-                </Button>
-              </React.Fragment>
+            {!showMore && (
+              <div className="show-more-btn">
+                <button onClick={showMoreHandler}>More</button>
+              </div>
+            )}
+            {showMore && (
+              <>
+                <div className="place-item_info-show">
+                  <div className="place-item__infoSign">Info</div>
+                  <div className="show-more-btn less">
+                    <button onClick={showMoreHandler}>Less</button>
+                  </div>
+                </div>
+                <p>{props.description}</p>
+              </>
             )}
           </div>
+          {showMore && (
+            <>
+              <div className="place-item__actions">
+                <Button inverse onClick={openMapHandlre}>
+                  View
+                </Button>
+                {auth.userId === props.creatorID && (
+                  <React.Fragment>
+                    <Button to={`/places/${props.id}`}>Edit</Button>
+                    <Button danger onClick={showDeleteWarningHandler}>
+                      Delete
+                    </Button>
+                  </React.Fragment>
+                )}
+              </div>
+            </>
+          )}
         </Card>
       </div>
     </React.Fragment>
