@@ -107,9 +107,9 @@ const PlaceItem = (props) => {
               onClick={showActionsHandler}
             >
               {!showCardActions ? (
-                <i className="fa fa-plus" aria-hidden="true" />
+                <i className="fa fa-plus" aria-hidden="true" title="Actions" />
               ) : (
-                <i className="fas fa-times" />
+                <i className="fas fa-times" title="Cancel" />
               )}
             </div>
             <div
@@ -119,7 +119,7 @@ const PlaceItem = (props) => {
               }
               onClick={openMapHandlre}
             >
-              <i className="fas fa-map-signs" />
+              <i className="fas fa-map-signs" title="View on map" />
             </div>
             {auth.userId === props.creatorID && (
               <>
@@ -130,7 +130,7 @@ const PlaceItem = (props) => {
                   }
                 >
                   <Link to={`/places/${props.id}`}>
-                    <i className="fas fa-pencil-alt" />
+                    <i className="fas fa-pencil-alt" title="Edit" />
                   </Link>
                 </div>
                 <div
@@ -140,7 +140,7 @@ const PlaceItem = (props) => {
                   }
                   onClick={showDeleteWarningHandler}
                 >
-                  <i className="fas fa-trash" />
+                  <i className="fas fa-trash" title="Delete" />
                 </div>
               </>
             )}
