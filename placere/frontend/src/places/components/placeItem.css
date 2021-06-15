@@ -14,6 +14,7 @@
 
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .place-item__info {
@@ -25,7 +26,6 @@
   margin-right: 1.5rem;
 
   padding: 0.8rem;
-  position: relative;
 
   display: flex;
   justify-content: center;
@@ -142,7 +142,7 @@
 .place-item__editCircle,
 .place-item__deleteCircle {
   position: absolute;
-  top: 5%;
+  top: 4%;
   right: 5%;
 
   cursor: pointer;
@@ -166,13 +166,13 @@
 }
 
 .place-item__viewCircle {
-  top: -15%;
+  top: -11%;
   font-size: 0.75rem;
   color: #4686ff;
 }
 
 .place-item__editCircle {
-  top: -25%;
+  top: -18%;
   font-size: 0.75rem;
 }
 
@@ -181,7 +181,7 @@
 }
 
 .place-item__deleteCircle {
-  top: -35%;
+  top: -25%;
   color: #ff0000;
 }
 
@@ -196,7 +196,7 @@
     top: 0%;
   }
   100% {
-    top: 15%;
+    top: 11%;
   }
 }
 @keyframes slide-bottom-view {
@@ -204,7 +204,7 @@
     top: 0%;
   }
   100% {
-    top: 15%;
+    top: 11%;
   }
 }
 
@@ -219,7 +219,7 @@
     top: 0%;
   }
   100% {
-    top: 25%;
+    top: 18%;
   }
 }
 @keyframes slide-bottom-edit {
@@ -227,7 +227,7 @@
     top: 0%;
   }
   100% {
-    top: 25%;
+    top: 18%;
   }
 }
 
@@ -242,7 +242,7 @@
     top: 0%;
   }
   100% {
-    top: 35%;
+    top: 25%;
   }
 }
 @keyframes slide-bottom-delete {
@@ -250,12 +250,35 @@
     top: 0%;
   }
   100% {
-    top: 35%;
+    top: 25%;
   }
 }
 
 @media (min-width: 768px) {
   .place-item__image {
     height: 20rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .place-item__infoCircle,
+  .place-item__editCircle,
+  .place-item__deleteCircle,
+  .place-item__viewCircle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .place-item__viewCircle,
+  .place-item__deleteCircle,
+  .place-item__infoCircle,
+  .place-item__editCircle {
+    font-size: 0.55rem;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .place-item__image {
+    padding: 0.55rem;
   }
 }

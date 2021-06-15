@@ -13,3 +13,9 @@
   break-before: avoid;
   break-after: avoid;
 }
+
+@media screen and (max-width: 370px) {
+  .place-list {
+    width: 100%;
+  }
+}
