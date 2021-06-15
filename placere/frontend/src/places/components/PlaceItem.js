@@ -9,11 +9,13 @@ import { useHttpClient } from "../../shared/hooks/HttpHook";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import Spinner from "../../shared/components/UIElements/Spinner";
 import "./placeItem.css";
+import { Link } from "react-router-dom";
 
 const PlaceItem = (props) => {
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [showCardActions, setShowCardActions] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -42,6 +44,10 @@ const PlaceItem = (props) => {
 
   const showMoreHandler = () => {
     setShowMore(!showMore);
+  };
+
+  const showActionsHandler = () => {
+    setShowCardActions(!showCardActions);
   };
 
   return (
@@ -95,6 +101,49 @@ const PlaceItem = (props) => {
               src={`${process.env.REACT_APP_SERVER_URI}/${props.image}`}
               alt={props.title}
             />
+
+            <div
+              className="place-item__infoCircle"
+              onClick={showActionsHandler}
+            >
+              {!showCardActions ? (
+                <i className="fa fa-plus" aria-hidden="true" />
+              ) : (
+                <i className="fas fa-times" />
+              )}
+            </div>
+            <div
+              className={
+                "place-item__viewCircle " +
+                (showCardActions ? "slide-bottom-view" : "")
+              }
+              onClick={openMapHandlre}
+            >
+              <i className="fas fa-map-signs" />
+            </div>
+            {auth.userId === props.creatorID && (
+              <>
+                <div
+                  className={
+                    "place-item__editCircle " +
+                    (showCardActions ? "slide-bottom-edit" : "")
+                  }
+                >
+                  <Link to={`/places/${props.id}`}>
+                    <i className="fas fa-pencil-alt" />
+                  </Link>
+                </div>
+                <div
+                  className={
+                    "place-item__deleteCircle " +
+                    (showCardActions ? "slide-bottom-delete" : "")
+                  }
+                  onClick={showDeleteWarningHandler}
+                >
+                  <i className="fas fa-trash" />
+                </div>
+              </>
+            )}
           </div>
           <div className="place-item__info">
             <h2>{props.title}</h2>
@@ -108,9 +157,6 @@ const PlaceItem = (props) => {
               <>
                 <div className="place-item_info-show">
                   <div className="place-item__infoSign">Info</div>
-                  <div className="show-more-btn less">
-                    <button onClick={showMoreHandler}>Less</button>
-                  </div>
                 </div>
                 <p>{props.description}</p>
               </>
@@ -118,18 +164,8 @@ const PlaceItem = (props) => {
           </div>
           {showMore && (
             <>
-              <div className="place-item__actions">
-                <Button inverse onClick={openMapHandlre}>
-                  View
-                </Button>
-                {auth.userId === props.creatorID && (
-                  <React.Fragment>
-                    <Button to={`/places/${props.id}`}>Edit</Button>
-                    <Button danger onClick={showDeleteWarningHandler}>
-                      Delete
-                    </Button>
-                  </React.Fragment>
-                )}
+              <div className="show-more-btn less">
+                <button onClick={showMoreHandler}>Less</button>
               </div>
             </>
           )}

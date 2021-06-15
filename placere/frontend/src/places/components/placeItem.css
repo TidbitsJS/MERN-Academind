@@ -25,6 +25,7 @@
   margin-right: 1.5rem;
 
   padding: 0.8rem;
+  position: relative;
 
   display: flex;
   justify-content: center;
@@ -57,14 +58,16 @@
 .place-item_info-show {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+
+  margin-top: 1.2rem;
 }
 
 .place-item__infoSign {
   text-align: center;
   background: #e9edff;
   padding: 0.2rem 0.8rem;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   border-radius: 5px;
 }
 
@@ -132,6 +135,123 @@
 
 .less {
   margin: 0.4rem 0;
+}
+
+.place-item__infoCircle,
+.place-item__viewCircle,
+.place-item__editCircle,
+.place-item__deleteCircle {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+
+  cursor: pointer;
+
+  background: #fff;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  font-size: 0.8rem;
+}
+
+.place-item__infoCircle {
+  color: #283055;
+}
+
+.place-item__viewCircle {
+  top: -15%;
+  font-size: 0.75rem;
+  color: #4686ff;
+}
+
+.place-item__editCircle {
+  top: -25%;
+  font-size: 0.75rem;
+}
+
+.place-item__editCircle i {
+  color: #157715;
+}
+
+.place-item__deleteCircle {
+  top: -35%;
+  color: #ff0000;
+}
+
+.slide-bottom-view {
+  -webkit-animation: slide-bottom-view 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: slide-bottom-view 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-bottom-view {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 15%;
+  }
+}
+@keyframes slide-bottom-view {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 15%;
+  }
+}
+
+.slide-bottom-edit {
+  -webkit-animation: slide-bottom-edit 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+  animation: slide-bottom-edit 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-bottom-edit {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 25%;
+  }
+}
+@keyframes slide-bottom-edit {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 25%;
+  }
+}
+
+.slide-bottom-delete {
+  -webkit-animation: slide-bottom-delete 0.5s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-bottom-delete 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-bottom-delete {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 35%;
+  }
+}
+@keyframes slide-bottom-delete {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 35%;
+  }
 }
 
 @media (min-width: 768px) {
