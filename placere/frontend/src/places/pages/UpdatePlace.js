@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import Button from "../../shared/components/FormElements/Button";
@@ -12,9 +12,11 @@ import Card from "../../shared/components/UIElements/Card";
 import { useHttpClient } from "../../shared/hooks/HttpHook";
 import Spinner from "../../shared/components/UIElements/Spinner";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import { AuthContext } from "../../shared/context/Auth-Context";
 import "./place.css";
 
 const UpdatePlace = () => {
+  const auth = useContext(AuthContext);
   const placeId = useParams().placeId;
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedPlace, setLoadedPlace] = useState();
@@ -83,6 +85,7 @@ const UpdatePlace = () => {
         }),
         {
           "content-type": "application/json",
+          Authorization: "Bearer " + auth.token,
         }
       );
 
