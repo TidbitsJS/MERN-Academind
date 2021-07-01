@@ -48,7 +48,7 @@ const signup = async (req, res, next) => {
 
   let hashedPassword;
   try {
-    hashedPassword = bcrypt.hash(password, 12);
+    hashedPassword = await bcrypt.hash(password, 12);
   } catch (err) {
     const error = new HttpError(
       "Could not create user, please try again.",
@@ -64,6 +64,8 @@ const signup = async (req, res, next) => {
     password: hashedPassword,
     places: [],
   });
+
+  console.log("Created User", createdUser);
 
   try {
     await createdUser.save();

@@ -52,7 +52,10 @@ const NewPlace = () => {
       await sendRequest(
         `${process.env.REACT_APP_SERVER_URI}/api/places`,
         "POST",
-        formData
+        formData,
+        {
+          Authorization: "Bearer " + auth.token,
+        }
       );
 
       history.push(`/${auth.userId}/places`);

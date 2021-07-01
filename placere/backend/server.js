@@ -8,7 +8,6 @@ require("dotenv").config();
 const placesRoutes = require("./routes/places.routes");
 const usersRoutes = require("./routes/users.routes");
 const HttpError = require("./models/http.error");
-const { response } = require("express");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -38,7 +37,7 @@ app.use((req, res, next) => {
 app.use((error, req, res, next) => {
   if (req.file) {
     fs.unlink(req.file.path, (err) => {
-      console.log(err);
+      console.log("Error ", err);
     });
   }
 
@@ -47,7 +46,7 @@ app.use((error, req, res, next) => {
   }
 
   res.status(error.code || 500);
-  res.json({ message: error.message || "Unknow error occured!" });
+  res.json({ message: error.message || "Unknown error occured!" });
 });
 
 mongoose
