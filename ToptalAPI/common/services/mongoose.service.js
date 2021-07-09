@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-require("dotenv").config();
+const MONGO_URI = require("../config/env.config").databaseURI;
 
 let count = 0;
 
@@ -14,7 +14,7 @@ const options = {
 const connectWithRetry = () => {
   console.log("Connecting to MongoDB Server...");
   mongoose
-    .connect(process.env.MONGO_URI, options)
+    .connect(MONGO_URI, options)
     .then(() => console.log("Successfully connected to mongod"))
     .catch((err) => {
       console.error(
