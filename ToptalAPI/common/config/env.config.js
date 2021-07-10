@@ -9,7 +9,7 @@ module.exports = {
   jwt_expiration_in_seconds: 36000,
   environment: "dev",
   permissionLevlels: {
-    NORMAL_USER: "dev",
+    NORMAL_USER: "1",
     PAID_USER: 4,
     ADMIN: 2048,
   },
