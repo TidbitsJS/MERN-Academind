@@ -33,6 +33,10 @@ exports.findById = (id) => {
   });
 };
 
+exports.findByEmail = (email) => {
+  return User.find({ email: email });
+};
+
 exports.patchUser = (id, userData) => {
   return User.findOneAndUpdate(
     {
