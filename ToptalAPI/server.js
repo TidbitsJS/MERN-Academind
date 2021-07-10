@@ -1,7 +1,7 @@
 const express = require("express");
 
 const AuthorizationRouter = require("./authorization/routes.config");
-const UserRouter = require("./users/routes/routes.config");
+const UserRouter = require("./users/routes.config");
 const port = require("./common/config/env.config").port;
 
 const app = express();
