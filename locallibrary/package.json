@@ -8,6 +8,7 @@
     "serverstart": "DEBUG=locallibrary:* yarn run devstart"
   },
   "dependencies": {
+    "async": "^3.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
