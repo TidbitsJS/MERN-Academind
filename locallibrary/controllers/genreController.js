@@ -12,7 +12,7 @@ exports.genre_list = (req, res, next) => {
         return next(err);
       }
 
-      res.render("genre_list", {
+      res.render("lists/genre_list", {
         title: "Genre List",
         genre_list: list_genres,
       });
@@ -39,7 +39,7 @@ exports.genre_detail = (req, res, next) => {
         return next(err);
       }
 
-      res.render("genre_detail", {
+      res.render("details/genre_detail", {
         title: "Genre Detail",
         genre: results.genre,
         genre_books: results.genre_books,

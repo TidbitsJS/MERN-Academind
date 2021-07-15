@@ -44,7 +44,10 @@ exports.book_list = (req, res, next) => {
         return next(err);
       }
       console.log("List books", list_books);
-      res.render("book_list", { title: "Book List", book_list: list_books });
+      res.render("lists/book_list", {
+        title: "Book List",
+        book_list: list_books,
+      });
     });
 };
 
@@ -71,7 +74,7 @@ exports.book_detail = (req, res, next) => {
         return next(err);
       }
 
-      res.render("book_detail", {
+      res.render("details/book_detail", {
         title: results.book.title,
         book: results.book,
         book_instances: results.book_instance,

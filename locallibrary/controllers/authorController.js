@@ -12,7 +12,7 @@ exports.author_list = (req, res, next) => {
         return next(err);
       }
 
-      res.render("author_list", {
+      res.render("lists/author_list", {
         title: "Author List",
         author_list: list_authors,
       });
@@ -39,7 +39,7 @@ exports.author_detail = (req, res, next) => {
         return next(err);
       }
 
-      res.render("author_detail", {
+      res.render("details/author_detail", {
         title: "Author Detail",
         author: results.author,
         author_books: results.author_books,

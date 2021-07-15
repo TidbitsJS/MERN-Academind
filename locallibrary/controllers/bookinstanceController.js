@@ -9,7 +9,7 @@ exports.bookinstance_list = (req, res, next) => {
         return next(err);
       }
 
-      res.render("bookinstance_list", {
+      res.render("lists/bookinstance_list", {
         title: "Book Instance List",
         bookinstance_list: list_bookinstances,
       });
@@ -28,7 +28,7 @@ exports.bookinstance_detail = (req, res, next) => {
         return next(err);
       }
 
-      res.render("bookinstance_detail", {
+      res.render("details/bookinstance_detail", {
         title: "Copy: " + bookinstance.book.title,
         bookinstance: bookinstance,
       });
