@@ -97,8 +97,11 @@ exports.author_create_post = [
     } else {
       // Check if author with same name already exists
       Author.findOne({
-        first_name: { $regex: req.body.first_name, $options: "i" },
-        family_name: { $regex: req.body.family_name, $options: "i" },
+        first_name: { $regex: "^" + req.body.first_name + "$", $options: "i" },
+        family_name: {
+          $regex: "^" + req.body.family_name + "$",
+          $options: "i",
+        },
       }).exec((err, found_author) => {
         if (err) return next(err);
 
