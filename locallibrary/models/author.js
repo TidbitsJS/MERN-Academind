@@ -56,4 +56,16 @@ AuthorSchema.virtual("dod_formatted").get(function () {
     : "Unknown";
 });
 
+// Virtual for author's date_of_date update form
+AuthorSchema.virtual("dob_updateForm").get(function () {
+  // format 'YYYY-MM-DD'
+  return DateTime.fromJSDate(this.date_of_birth).toISODate();
+});
+
+// Virtual for author's date_of_death update form
+AuthorSchema.virtual("dod_updateForm").get(function () {
+  // format 'YYYY-MM-DD'
+  return DateTime.fromJSDate(this.date_of_death).toISODate();
+});
+
 module.exports = mongoose.model("Author", AuthorSchema);
