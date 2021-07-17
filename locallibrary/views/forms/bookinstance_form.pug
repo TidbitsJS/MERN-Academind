@@ -10,7 +10,7 @@ block content
         - book_list.sort(function(a, b) {let textA = a.title.toUpperCase(); let textB = b.title.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
         for book in book_list
           if bookinstance
-            option(value=book._id selected=(bookinstance.book.toString()==book._id.toString() ? 'selected' : false)) #{book.title}
+            option(value=book._id selected=(selected_book.toString() === book._id.toString() ? 'selected' : false)) #{book.title}
           else
             option(value=book._id) #{book.title}
 
@@ -19,15 +19,15 @@ block content
       input#imprint.form-control(type='text' placeholder='Publisher and date information' name='imprint' required='true' value=(undefined===bookinstance ? '' : bookinstance.imprint))
     div.form-group
       label(for='due_back') Date when book available:
-      input#due_back.form-control(type='date' name='due_back' value=(undefined===bookinstance ? '' : bookinstance.due_back))
+      input#due_back.form-control(type='date' name='due_back' value=(undefined===bookinstance ? '' : bookinstance.due_back_update))
 
     div.form-group
       label(for='status') Status:
       select#status.form-control(type='select' placeholder='Select status' name='status' required='true')
-        option(value='Maintenance') Maintenance
-        option(value='Available') Available
-        option(value='Loaned') Loaned
-        option(value='Reserved') Reserved
+        option(value='Maintenance' selected=(undefined === bookinstance || bookinstance.status !== 'Maintenance' ? false: 'selected')) Maintenance
+        option(value='Available' selected=(undefined === bookinstance || bookinstance.status !== 'Available' ? false: 'selected')) Available
+        option(value='Loaned' selected=(undefined === bookinstance || bookinstance.status !== 'Loaned' ? false: 'selected')) Loaned
+        option(value='Reserved' selected=(undefined === bookinstance || bookinstance.status !== 'Reserved' ? false: 'selected')) Reserved
 
     button.btn.btn-primary(type='submit') Submit
 
